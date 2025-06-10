@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h2>Enter a Song Name</h2>
+    <form method="POST">
+        <input type="text" name="song" value="{{ song }}" required>
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if recommendations %}
+        <h3>Recommendations:</h3>
+        <ul>
+            {% for rec in recommendations %}
+                <li><strong>{{ rec.name }}</strong> by {{ rec.artist }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
